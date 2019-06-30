@@ -39,7 +39,7 @@ app.get("/blogs/new" ,function (req ,res) {
 });
 //CREATE ROUTE
 app.post("/blogs" ,function (req ,res) {
-  req.blogs.body.blog = req.sanitize(req.blogs.body.blog)
+  
   blogs.create(req.body.blog ,function (err ,newBlog) {
     if(err){
       res.render("new");
@@ -70,7 +70,7 @@ app.get("/blogs/:id/edit" ,function(req ,res){
 });
 //UPDATE ROUTE
 app.put("/blogs/:id" ,function(req ,res){
-  req.blogs.body.blog = req.sanitize(req.blogs.body.blog)
+  
   blogs.findByIdAndUpdate(req.params.id ,req.body.blog ,function (err ,updatedblog) {
     if(err){
       res.redirect("/blogs");
